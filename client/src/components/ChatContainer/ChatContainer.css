@@ -1,0 +1,14 @@
+.container {
+	margin: 0 auto;
+	max-width: 90%;
+}
+
+.chat-container {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: 80vh;
+	border-radius: 5px;
+	overflow: hidden;
+}

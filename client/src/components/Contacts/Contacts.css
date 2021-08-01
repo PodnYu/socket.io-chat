@@ -1,0 +1,8 @@
+.contacts {
+	flex: 1;
+	background-color: #ffffff;
+	display: flex;
+	flex-direction: column;
+	/* border-radius: 0 5px 5px 0; */
+	height: 100%;
+}

@@ -1,0 +1,43 @@
+.contact {
+	display: flex;
+	flex-direction: row;
+	margin-top: 15px;
+	/* max-height: 80px; */
+	min-height: 50px;
+}
+
+.contact-avatar-container {
+	position: relative;
+	flex: 1;
+}
+
+.online-badge {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: #27d333;
+	border-radius: 50%;
+	width: 14px;
+	height: 14px;
+	transform: translate(30%, 30%);
+}
+
+.contact-avatar {
+	height: 100%;
+	width: 100%;
+}
+
+.contact-info {
+	flex: 4;
+	margin-left: 10px;
+}
+
+.contact-name {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.contact-description {
+	font-size: 13px;
+	color: #989898;
+}

@@ -1,0 +1,45 @@
+.message {
+	min-width: 20%;
+	max-width: 75%;
+	width: -moz-fit-content;
+	width: fit-content;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.message .message-header {
+	background-color: #beccd9;
+	border-radius: 5px 5px 0 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 10px 15px;
+}
+
+.message .message-content {
+	padding: 10px 15px;
+	background-color: #f4f8fb;
+	border-radius: 0px 0px 5px 5px;
+	box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.25);
+	/* long sequences without spaces will not wrap otherwise */
+	overflow-wrap: anywhere;
+}
+
+.message-header .sent-timestamp {
+	color: #97a5b2;
+}
+
+.message .seen-timestamp {
+	margin-top: 5px;
+	font-size: 13px;
+	padding-left: 20px;
+	color: #a1abb4;
+}
+
+.own-message {
+	align-self: flex-end;
+}
+
+.own-message .message-header {
+	background-color: #eeccb3;
+}

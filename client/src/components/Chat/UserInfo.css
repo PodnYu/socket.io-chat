@@ -1,0 +1,40 @@
+.user-info {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	background-color: #beccd9;
+	/* border-top-left-radius: 5px; */
+}
+
+.user-info .avatar {
+	height: 100%;
+	width: 14%;
+	/* border-top-left-radius: 5px; */
+}
+
+.avatar-img {
+	height: 100%;
+	width: 100%;
+	/* border-top-left-radius: 5px; */
+}
+
+@media screen and (max-width: 970px) {
+	.user-info .avatar {
+		width: 25%;
+	}
+}
+
+.user-info .info {
+	flex: 5;
+	padding: 20px;
+}
+
+.user-info .info .name {
+	font-size: 24px;
+	color: #333a44;
+}
+
+.user-info .info .description {
+	font-size: 14px;
+	color: #394754;
+}

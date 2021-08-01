@@ -1,0 +1,13 @@
+.chat {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex: 3;
+	background-color: #d8dfe7;
+	/* border-radius: 5px 0 0 5px; */
+}
+
+.user-typing-status {
+	text-align: center;
+	color: #418bca;
+}
