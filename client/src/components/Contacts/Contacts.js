@@ -2,10 +2,10 @@ import './Contacts.css';
 import ContactsContainer from './ContactsContainer';
 import ContactsSearchBar from './ContactsSearchBar';
 
-const Contacts = () => {
+const Contacts = ({ setMessageTo }) => {
 	return (
 		<div className='contacts'>
-			<ContactsContainer />
+			<ContactsContainer setMessageTo={setMessageTo} />
 			<ContactsSearchBar />
 		</div>
 	);

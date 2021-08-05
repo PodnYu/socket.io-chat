@@ -20,7 +20,7 @@ const Message = ({
 				<div className='sent-timestamp'>{sentTimestamp}</div>
 			</div>
 			<div className='message-content'>{message}</div>
-			{isOwn && <div className='seen-timestamp'>Seen at {seenTimestamp}</div>}
+			{/* {isOwn && <div className='seen-timestamp'>Seen at {seenTimestamp}</div>} */}
 		</div>
 	);
 };

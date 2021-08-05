@@ -32,12 +32,22 @@
 	font-size: 16px;
 	border: none;
 	transition: 0.3s;
+	cursor: pointer;
 }
 
 .send-message-btn:hover {
-	cursor: pointer;
 	background-color: #3c78ad;
 	transform: scale(1.01);
+}
+
+.send-message-btn.disabled {
+	background-color: rgb(170, 170, 170);
+	transform: none;
+}
+
+.send-message-btn.disabled:hover {
+	background-color: rgb(170, 170, 170);
+	transform: none;
 }
 
 .send-message-btn:active {

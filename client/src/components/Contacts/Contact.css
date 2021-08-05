@@ -1,9 +1,15 @@
 .contact {
 	display: flex;
 	flex-direction: row;
-	margin-top: 15px;
+	/* margin-top: 15px; */
 	/* max-height: 80px; */
 	min-height: 50px;
+	cursor: pointer;
+	padding: 5px 20px;
+}
+
+.contact:hover {
+	background-color: #f0f3f7;
 }
 
 .contact-avatar-container {
