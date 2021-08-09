@@ -1,7 +1,7 @@
 import { Server, Socket } from 'socket.io';
 import { IBot, Msg } from '../interfaces/IBot';
-import ChatMessageService from '../services/ChatMessageService';
-import DialogService from '../services/DialogService';
+import { IChatMessageService } from '../interfaces/IChatMessageService';
+import { IDialogService } from '../interfaces/IDialogService';
 
 /**
  * SpamBot
@@ -14,8 +14,8 @@ class SpamBot extends IBot {
 	timers = new Map<string, NodeJS.Timeout>();
 
 	constructor(
-		dialogService: DialogService,
-		chatMessageService: ChatMessageService
+		dialogService: IDialogService,
+		chatMessageService: IChatMessageService
 	) {
 		super(dialogService, chatMessageService);
 	}

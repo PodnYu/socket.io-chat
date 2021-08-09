@@ -8,7 +8,7 @@ import chatMessagesRepository from './ChatMessagesRepository';
 import dialogRepository from './DialogRepository';
 import userRepository from './UserRepository';
 
-export class RepositoryFactory {
+export class RepositoryRegistry {
 	static getUserRepository(): IUserRepository {
 		return userRepository;
 	}

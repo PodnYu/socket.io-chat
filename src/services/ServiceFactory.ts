@@ -10,28 +10,28 @@ import UserService from './UserService';
 
 import { AvatarSrcResolver } from '../utils/AvatarSrcResolver';
 
-import { RepositoryFactory } from '../repositories/RepositoryFactory';
+import { RepositoryRegistry } from '../repositories/RepositoryRegistry';
 
 export class ServiceFactory {
 	static createUserService(): IUserService {
 		return new UserService(
-			RepositoryFactory.getUserRepository(),
+			RepositoryRegistry.getUserRepository(),
 			AvatarSrcResolver.getInstance().defaultAvatarFileName
 		);
 	}
 
 	static createDialogService(): IDialogService {
-		return new DialogService(RepositoryFactory.getDialogRepository());
+		return new DialogService(RepositoryRegistry.getDialogRepository());
 	}
 
 	static createChatMessageService(): IChatMessageService {
 		return new ChatMessageService(
-			RepositoryFactory.getChatMessagesRepository(),
-			RepositoryFactory.getDialogRepository()
+			RepositoryRegistry.getChatMessagesRepository(),
+			RepositoryRegistry.getDialogRepository()
 		);
 	}
 
 	static createBotService(): IBotService {
-		return new BotService(RepositoryFactory.getBotRepository());
+		return new BotService(RepositoryRegistry.getBotRepository());
 	}
 }

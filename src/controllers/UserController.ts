@@ -1,37 +1,25 @@
 import { Server, Socket } from 'socket.io';
+import { ServiceFactory } from '../services/ServiceFactory';
+
 import UserModel from '../models/UserModel';
-import UserService from '../services/UserService';
-import userRepository from '../repositories/UserRepository';
-import debug from 'debug';
-
-import ChatMessageModel from '../models/ChatMessageModel';
-import DialogService from '../services/DialogService';
-import dialogRepository from '../repositories/DialogRepository';
-import BotService from '../services/BotService';
-import botRepository from '../repositories/BotRepository';
 import BotModel from '../models/BotModel';
+import ChatMessageModel from '../models/ChatMessageModel';
 
-import ChatMessageService from '../services/ChatMessageService';
-import chatMessagesRepository from '../repositories/ChatMessagesRepository';
-import { AvatarSrcResolver } from '../utils/AvatarSrcResolver';
+import debug from 'debug';
+import BotService from '../services/BotService';
+import BotRepository from '../repositories/BotRepository';
 
 const chatIncomeEvents = debug('chat:incomeEvents');
 const chatMessages = debug('chat:messages');
 const chatConnectionsEvents = debug('chat:connections');
 const chatDebugger = debug('chat:debug');
 
-const dialogService = new DialogService(dialogRepository);
-const botService = new BotService(botRepository);
+const dialogService = ServiceFactory.createDialogService();
+// const botService = ServiceFactory.createBotService();
+const botService = new BotService(BotRepository);
 
-const chatMessageService = new ChatMessageService(
-	chatMessagesRepository,
-	dialogService
-);
-
-const userService = new UserService(
-	userRepository,
-	AvatarSrcResolver.getInstance().defaultAvatarFileName
-);
+const chatMessageService = ServiceFactory.createChatMessageService();
+const userService = ServiceFactory.createUserService();
 
 class UserController {
 	private io: Server;

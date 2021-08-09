@@ -1,14 +1,13 @@
-import dialogRepository from '../repositories/DialogRepository';
-import DialogService from '../services/DialogService';
-
-import ChatMessageService from '../services/ChatMessageService';
-import chatMessagesRepository from '../repositories/ChatMessagesRepository';
-
 import EchoBot from './EchoBot';
 import ReverseBot from './ReverseBot';
 import IgnoreBot from './IgnoreBot';
 import SpamBot from './SpamBot';
+import DialogService from '../services/DialogService';
+import dialogRepository from '../repositories/DialogRepository';
+import chatMessagesRepository from '../repositories/ChatMessagesRepository';
+import ChatMessageService from '../services/ChatMessageService';
 
+// using ServiceFactory here causes circular dependency
 const dialogService = new DialogService(dialogRepository);
 const chatMessageService = new ChatMessageService(
 	chatMessagesRepository,

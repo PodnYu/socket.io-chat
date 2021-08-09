@@ -1,8 +1,8 @@
 import { Server, Socket } from 'socket.io';
 import { v4 as uuidv4 } from 'uuid';
 import BotModel from '../models/BotModel';
-import ChatMessageService from '../services/ChatMessageService';
-import DialogService from '../services/DialogService';
+import { IChatMessageService } from './IChatMessageService';
+import { IDialogService } from './IDialogService';
 
 export type Msg = {
 	message: string;
@@ -14,8 +14,8 @@ export abstract class IBot {
 	protected _online: boolean;
 
 	constructor(
-		private dialogService: DialogService,
-		private chatMessageService: ChatMessageService
+		private dialogService: IDialogService,
+		private chatMessageService: IChatMessageService
 	) {
 		this._id = uuidv4();
 		this._online = true;

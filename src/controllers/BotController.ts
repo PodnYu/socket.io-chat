@@ -1,14 +1,15 @@
 import { Server, Socket } from 'socket.io';
-import botRepository from '../repositories/BotRepository';
-import BotService from '../services/BotService';
-
 import debug from 'debug';
 
 import { Msg } from '../interfaces/IBot';
+import { ServiceFactory } from '../services/ServiceFactory';
+import BotService from '../services/BotService';
+import BotRepository from '../repositories/BotRepository';
 
 const botControllerDebug = debug('chat:botController');
 
-const botService = new BotService(botRepository);
+// const botService = ServiceFactory.createBotService();
+const botService = new BotService(BotRepository);
 
 class BotController {
 	constructor(private socket: Socket, private io: Server) {}
