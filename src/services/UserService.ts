@@ -1,8 +1,9 @@
 import UserModel from '../models/UserModel';
 import { IUserRepository } from '../interfaces/IUserRepository';
 import { getRandomName } from '../utils/helpers';
+import { IUserService } from '../interfaces/IUserService';
 
-export class UserService {
+export class UserService implements IUserService {
 	constructor(
 		private userRepository: IUserRepository,
 		private defaultAvatarFileName: string

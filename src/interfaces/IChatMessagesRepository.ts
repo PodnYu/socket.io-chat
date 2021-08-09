@@ -5,5 +5,8 @@ export interface IChatMessagesRepository {
 
 	getMessages(chatId: string): Promise<ChatMessageModel[]>;
 
-	getMessagesFrom(chatId: string, index: number): Promise<ChatMessageModel[]>;
+	getMessagesFromIndex(
+		chatId: string,
+		index: number
+	): Promise<ChatMessageModel[]>;
 }

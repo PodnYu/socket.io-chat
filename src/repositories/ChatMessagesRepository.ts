@@ -29,7 +29,7 @@ export class ChatMessagesRepository implements IChatMessagesRepository {
 		return this.chatMessages.get(chatId) || [];
 	};
 
-	getMessagesFrom = async (
+	getMessagesFromIndex = async (
 		chatId: string,
 		index: number
 	): Promise<ChatMessageModel[]> => {

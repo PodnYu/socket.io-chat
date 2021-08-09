@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import { IDialogRepository } from '../interfaces/IDialogRepository';
+import { IDialogService } from '../interfaces/IDialogService';
 
-class DialogService {
+class DialogService implements IDialogService {
 	constructor(private dialogRepository: IDialogRepository) {}
 
 	initUser = (userId: string): void => {

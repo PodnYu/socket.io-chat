@@ -1,12 +1,13 @@
-import DialogService from './DialogService';
+import { IDialogService } from '../interfaces/IDialogService';
 import { v4 as uuidv4 } from 'uuid';
 import ChatMessageModel from '../models/ChatMessageModel';
 import { IChatMessagesRepository } from '../interfaces/IChatMessagesRepository';
+import { IChatMessageService } from '../interfaces/IChatMessageService';
 
-class ChatMessageService {
+class ChatMessageService implements IChatMessageService {
 	constructor(
 		private messageRepository: IChatMessagesRepository,
-		private dialogService: DialogService
+		private dialogService: IDialogService
 	) {}
 
 	getTimestamp = (): number => {
@@ -42,11 +43,11 @@ class ChatMessageService {
 		return await this.messageRepository.getMessages(chatId);
 	};
 
-	getMessagesFrom = async (
+	getMessagesFromIndex = async (
 		chatId: string,
 		index: number
 	): Promise<ChatMessageModel[]> => {
-		return await this.messageRepository.getMessagesFrom(chatId, index);
+		return await this.messageRepository.getMessagesFromIndex(chatId, index);
 	};
 }
 
