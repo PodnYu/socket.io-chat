@@ -1,12 +1,18 @@
+import { useState } from 'react';
 import './Contacts.css';
 import ContactsContainer from './ContactsContainer';
 import ContactsSearchBar from './ContactsSearchBar';
 
-const Contacts = ({ setMessageTo }) => {
+const Contacts = ({ setContact }) => {
+	const [searchUserName, setSearchUserName] = useState('');
+
 	return (
 		<div className='contacts'>
-			<ContactsContainer setMessageTo={setMessageTo} />
-			<ContactsSearchBar />
+			<ContactsContainer
+				setContact={setContact}
+				searchedUserName={searchUserName}
+			/>
+			<ContactsSearchBar onSearch={setSearchUserName} />
 		</div>
 	);
 };

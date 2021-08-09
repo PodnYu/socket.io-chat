@@ -11,7 +11,7 @@ const Tabs = ({ defaultIndex = 0, onTabClick, children }) => {
 		setCurrentIndex(newIndex);
 	};
 
-	const items = children.filter((item) => item.type.name === 'TabItem');
+	const items = children.filter((item) => item.props.tabItem === true);
 
 	return (
 		<>

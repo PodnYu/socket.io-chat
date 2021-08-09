@@ -1,8 +1,6 @@
 .contact {
 	display: flex;
 	flex-direction: row;
-	/* margin-top: 15px; */
-	/* max-height: 80px; */
 	min-height: 50px;
 	cursor: pointer;
 	padding: 5px 20px;
@@ -19,12 +17,12 @@
 
 .online-badge {
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	bottom: -1px;
+	right: -1px;
 	background-color: #27d333;
 	border-radius: 50%;
-	width: 14px;
-	height: 14px;
+	width: 13px;
+	height: 13px;
 	transform: translate(30%, 30%);
 }
 

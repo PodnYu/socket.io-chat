@@ -1,0 +1,38 @@
+{
+	"name": "chat_server",
+	"version": "1.0.0",
+	"description": "backend for chat",
+	"main": "server.js",
+	"scripts": {
+		"start": "npm run install-server && npm run install-client && npm run build-client && npm run build-server && npm run run-server",
+		"install-server": "npm install",
+		"build-server": "tsc",
+		"run-server": "node ./dist/server",
+		"build-client": "npm run build --prefix ./client ./client",
+		"install-client": "npm install --prefix ./client ./client"
+	},
+	"keywords": [],
+	"author": "PodnYu",
+	"license": "ISC",
+	"dependencies": {
+		"debug": "^4.3.2",
+		"dotenv": "^10.0.0",
+		"fastify": "^3.20.1",
+		"fastify-socket.io": "^2.0.0",
+		"fastify-static": "^4.2.2",
+		"socket.io": "^4.1.3",
+		"socket.io-client": "^4.1.3",
+		"ts-node": "^10.1.0",
+		"uuid": "^8.3.2"
+	},
+	"devDependencies": {
+		"@types/debug": "^4.1.7",
+		"@types/socket.io": "^3.0.2",
+		"@types/socket.io-client": "^3.0.0",
+		"@types/uuid": "^8.3.1",
+		"@typescript-eslint/eslint-plugin": "^4.29.0",
+		"@typescript-eslint/parser": "^4.29.0",
+		"eslint": "^7.32.0",
+		"typescript": "^4.3.5"
+	}
+}

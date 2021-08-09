@@ -1,3 +1,4 @@
+import { getAvatarSrc } from '../../Helpers';
 import './Contact.css';
 
 const Contact = ({
@@ -6,19 +7,20 @@ const Contact = ({
 	userName,
 	description,
 	online,
-	setMessageTo,
+	setContact,
+	isBot,
 }) => {
 	return (
 		<div
 			className='contact'
 			onClick={() => {
-				setMessageTo({ id, userName, avatar, online, description });
+				setContact({ id, userName, avatar, online, description, isBot });
 			}}
 		>
 			<div className='contact-avatar-container'>
 				<img
 					className='contact-avatar'
-					src={`http://localhost:8080/avatars/${avatar}`}
+					src={getAvatarSrc(avatar)}
 					alt='contact-avatar'
 				/>
 				{online && <div className='online-badge'></div>}

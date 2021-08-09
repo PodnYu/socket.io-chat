@@ -1,8 +1,18 @@
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useRef } from 'react';
 import './ChatInputs.css';
+import useDebounce from '../../hooks/debounce';
 
-const ChatInputs = ({ sendMessage, disabled = false }) => {
+const ChatInputs = ({
+	sendMessage,
+	disabled = false,
+	onStartTyping,
+	onStopTyping,
+}) => {
+	const [message, setMessage] = useState('');
+	const [isTyping, setIsTyping] = useState(false);
+
 	const messageInputRef = useRef(null);
 
 	const handleInputKeyUp = (e) => {
@@ -19,12 +29,28 @@ const ChatInputs = ({ sendMessage, disabled = false }) => {
 		}
 
 		messageInputRef.current.value = '';
+		messageInputRef.current.focus();
 		sendMessage(message);
 	};
+
+	const value = useDebounce(message, 1000);
+
+	useEffect(() => {
+		if (onStopTyping) onStopTyping();
+		setIsTyping(false);
+	}, [value]);
 
 	const buttonStyles = classNames('send-message-btn', {
 		disabled: disabled,
 	});
+
+	const inputOnChange = (e) => {
+		if (!isTyping) {
+			if (onStartTyping) onStartTyping();
+			setIsTyping(true);
+		}
+		setMessage(e.target.value);
+	};
 
 	return (
 		<div className='chat-inputs'>
@@ -33,6 +59,7 @@ const ChatInputs = ({ sendMessage, disabled = false }) => {
 				type='text'
 				className='message-input'
 				placeholder='Start chatting!'
+				onChange={inputOnChange}
 				onKeyUp={handleInputKeyUp}
 			/>
 			<button

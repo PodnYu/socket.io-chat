@@ -1,25 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './ChatContainer.css';
 import Chat from '../Chat';
 import Contacts from '../Contacts';
 
 const ChatContainer = () => {
-	const [messageTo, setMessageTo] = useState(null);
+	const [contact, setContact] = useState(null);
 
-	useEffect(() => {
-		console.log('messageTo:', messageTo);
-	}, [messageTo]);
-
-	const messageToChanged = (contact) => {
-		if (messageTo === null || contact.id !== messageTo.id) {
-			setMessageTo(contact);
+	const contactChanged = (user) => {
+		if (contact === null || contact.id !== user.id) {
+			setContact(user);
 		}
 	};
 
 	return (
 		<div className='container chat-container'>
-			<Chat messageTo={messageTo} />
-			<Contacts setMessageTo={messageToChanged} />
+			<Chat contact={contact} />
+			<Contacts setContact={contactChanged} />
 		</div>
 	);
 };

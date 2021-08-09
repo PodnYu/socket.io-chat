@@ -1,14 +1,13 @@
-import './App.css';
 import Header from './components/Header';
 import ChatContainer from './components/ChatContainer';
-import SocketContext from './SocketContext';
+import AppContext from './AppContext';
 
 function App() {
 	return (
-		<SocketContext>
+		<AppContext>
 			<Header />
 			<ChatContainer />
-		</SocketContext>
+		</AppContext>
 	);
 }
 

@@ -2,17 +2,18 @@ import './ContactsContainer.css';
 import Contact from './Contact';
 import { Tabs } from './Tabs';
 import { TabItem } from './Tabs';
-import { useEffect, useState, useContext } from 'react';
-import { socketContext } from '../../SocketContext';
+import { useEffect, useState } from 'react';
+import { useAppContext } from '../../AppContext';
+import './Tabs/Tabs.css';
 
-const ContactsContainer = ({ setMessageTo }) => {
+const ContactsContainer = ({ setContact, searchedUserName }) => {
 	const [contacts, setContacts] = useState([]);
-	const { socket } = useContext(socketContext);
+	const { socket } = useAppContext();
 
 	useEffect(() => {
-		socket.emit('getAllOtherUsers', (users) => {
-			console.log({ users });
-			setContacts(users);
+		socket.emit('getAllOtherUsersAndBots', (usersAndBots) => {
+			console.log('getAllOtherUserAndBots:', usersAndBots);
+			setContacts(usersAndBots);
 		});
 
 		socket.on('user:join', (user) => {
@@ -34,18 +35,36 @@ const ContactsContainer = ({ setMessageTo }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	const searchedContacts = searchedUserName
+		? contacts.filter((contact) =>
+				contact.userName.toLowerCase().includes(searchedUserName)
+		  )
+		: contacts;
+
+	const onlineContacts = searchedContacts.filter(
+		(contact) => contact.online === true
+	);
+
 	return (
 		<Tabs defaultIndex='1'>
-			<TabItem label='Online' index='1'>
-				{contacts.map((contact, index) => (
+			<TabItem tabItem={true} label='Online' index='1'>
+				{onlineContacts.map((contact) => (
 					<Contact
 						key={`contact-${contact.id}`}
 						{...contact}
-						setMessageTo={setMessageTo}
+						setContact={setContact}
 					/>
 				))}
 			</TabItem>
-			<TabItem label='All' index='2'></TabItem>
+			<TabItem tabItem={true} label='All' index='2'>
+				{searchedContacts.map((contact) => (
+					<Contact
+						key={`contact-${contact.id}`}
+						{...contact}
+						setContact={setContact}
+					/>
+				))}
+			</TabItem>
 		</Tabs>
 	);
 };
